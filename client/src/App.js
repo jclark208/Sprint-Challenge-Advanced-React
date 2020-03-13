@@ -1,26 +1,51 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import Nav from './components/nav'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor (){
+    super();
+    this.state = {
+      data:[]
+    }
+   
+  }
+componentDidMount(){
+  axios.get('http://localhost:5000/api/players')
+    .then(res => {
+      console.log(res);
+      this.setState({
+        data: res.data
+      })
+    })
+    .catch(err => {
+      console.log('Youve got and error',err)
+    });
+}
+
+
+    
+  
+
+  render(){
+    return(
+      <div className ='cardContainer'>
+        <Nav />
+        {this.state.data.map(player => {
+          return(
+            <div className='player'>
+              <h1>{player.name}</h1>
+          <h3>{player.country}</h3>
+          <h3>Has been searched {player.searches} times.</h3>
+            </div>  
+          )
+        })}
+      </div>
+    )
+  }
 }
 
 export default App;

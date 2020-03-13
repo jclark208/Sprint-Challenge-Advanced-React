@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -30,4 +31,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.player{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 50%;
+  margin: 1%;
+  background-color: #61dafb;
+}
+.cardContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+*{
+  background-color: aquamarine;
+}
+h1{
+  background-color: #61dafb;
+}
+h3{
+  background-color: #61dafb;
+}
+span{
+  color: blue;
 }
